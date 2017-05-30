@@ -1,0 +1,16 @@
+applications:
+- name: go-env
+  buildpack: https://github.com/cloudfoundry/go-buildpack#v1.8.3
+  memory: 32M
+  instances: 1
+  services:
+    # go-env-mq: rabbitmq3
+    # go-env-db: mongodb
+    # go-env-cache: redis
+  stackato:
+    ignores:
+    - .git
+    - bin
+    - tmp
+    - go-env
+    - go-env.exe
