@@ -11,21 +11,22 @@ To deploy this application, execute the following commands:
     $ cd go-env
     ```
 
-  2. Install Godep package manager (git required to complete):
+  2. Deploy to Kubernetes
 
     ```
-    $ go get github.com/tools/godep
+    $ kubectl apply -f k8s-go-env-0.0.10.yaml
+    $ kubectl apply -f k8s-go-env-0.1.2.yaml
+    ```
+  
+  3. Deploy to Kubernetes with Helm
 
     ```
-
-  3. Create Godep package manager files:
-
-    ```
-    $ godep save
+    $ helm install --name go-env helm/go-env -f helm-values-go-env-0.0.10.yaml
+    $ helm install --name go-env-canary helm/go-env -f helm-values-go-env-0.1.2.yaml
     ```
 
-  3. Deploy to HPE Stackato PaaS
+  4. Deploy to CF
 
     ```
-    $ stackato push --stack cflinuxfs2 -n
+    $ cf push --stack cflinuxfs2 -n
     ```
