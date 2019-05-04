@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "go-env.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "go-env.fullname" . }}
+    app.kubernetes.io/name: {{ .Values.app }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -21,7 +21,7 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "go-env.fullname" . }}
+        app.kubernetes.io/name: {{ .Values.app }}
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/version: {{ .Values.version }}
         app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -29,9 +29,9 @@ spec:
         app: {{ .Values.app }}
         version: {{ .Values.version }}
         env: {{ .Values.environment }}
-      annotations:
+      annotations: {}
         # prometheus.io/scrape: "true"
-        # prometheus.io/port: "8080"
+        # prometheus.io/port: "80"
     spec:
       containers:
         - name: {{ .Chart.Name }}
