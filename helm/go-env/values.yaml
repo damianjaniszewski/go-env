@@ -12,6 +12,8 @@ restartPolicy: Always
 image:
   repository: damianjaniszewski/go-env
   tag: 0.0.12
+  pullSecrets: []
+    # - name: myregistrykey
   pullPolicy: IfNotPresent
 
 nameOverride: ""

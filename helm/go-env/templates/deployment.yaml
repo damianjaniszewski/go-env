@@ -56,6 +56,10 @@ spec:
               port: 80
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml .Values.image.pullSecrets | nindent 8 }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
