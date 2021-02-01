@@ -1,5 +1,19 @@
 apiVersion: v1
-appVersion: "0.0.10"
+appVersion: "0.0.12"
 description: A Helm chart for go-env
 name: go-env
-version: 0.0.2
+version: 0.0.8
+sources:
+- https://github.com/damianjaniszewski/go-env
+maintainers:
+- email: damian.janiszewski@gmail.com
+  name: Damian Janiszewski
+keywords:
+- go-env
+- demo
+- env
+- environment
+- variables
+- variable
+- go
+- golang

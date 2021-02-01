@@ -30,7 +30,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -a -tags 'static netgo' -ldflags '-w' e
 # Stage 1: running container 
 FROM scratch
 
-LABEL version="0.0.10"
+LABEL version="0.0.12"
 LABEL author "Damian Janiszewski"
 
 # Copy binaries from stage 0 builder container

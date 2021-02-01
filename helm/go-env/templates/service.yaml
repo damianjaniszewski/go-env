@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.app }}
+  name: {{ include "go-env.servicename" . }}
   labels:
     app.kubernetes.io/name: {{ .Values.app }}
     app.kubernetes.io/instance: {{ .Release.Name }}
