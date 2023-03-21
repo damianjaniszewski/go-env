@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 app: go-env
-version: 0.0.12
+version: 0.0.14
 environment: stage
 
 replicaCount: 1
@@ -11,7 +11,7 @@ restartPolicy: Always
 
 image:
   repository: damianjaniszewski/go-env
-  tag: 0.0.12
+  tag: 0.0.14
   pullSecrets: []
     # - name: myregistrykey
   pullPolicy: IfNotPresent
@@ -33,6 +33,8 @@ service:
   enabled: false
   type: ClusterIP
   port: 80
+  annotations: {}
+    # cloud.google.com/load-balancer-type: "Internal"
 servicenameOverride: ""
 
 annotations: {}
