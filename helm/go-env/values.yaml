@@ -19,6 +19,16 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+env: {}
+  # GOOGLE_REGION: global
+  # GOOGLE_PROJECT: myproject
+
+  # These variables take value from existing Secret objects.
+secrets: []
+  # - envName: AWS_SECRET_ACCESS_KEY
+  #   secretName: vault
+  #   secretKey: AWS_SECRET_ACCESS_KEY
+
 service:
   enabled: false
   type: ClusterIP

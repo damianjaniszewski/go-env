@@ -34,3 +34,29 @@ Create chart name and version as used by the chart label.
 {{- define "go-env.servicename" -}}
 {{- default .Release.Name .Values.servicenameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+Inject extra environment vars in the format key:value, if populated
+*/}}
+{{- define "go-env.env" -}}
+{{- if .env -}}
+{{- range $key, $value := .env }}
+- name: {{ printf "%s" $key | replace "." "_" | upper | quote }}
+  value: {{ $value | quote }}
+{{- end }}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Inject extra environment populated by secrets, if populated
+*/}}
+{{- define "go-env.secrets" -}}
+{{- if .secrets -}}
+{{- range .secrets }}
+- name: {{ .envName }}
+  valueFrom:
+   secretKeyRef:
+     name: {{ .secretName }}
+     key: {{ .secretKey }}
+{{- end -}}
+{{- end -}}
+{{- end -}}
